@@ -119,15 +119,15 @@ public class GraalSandboxImpl extends NashornSandboxImpl implements GraalSandbox
 	 */	
     @Override
 	protected Bindings secureBindings(Bindings bindings) {
-        /*if (bindings == null) return null;
+        if (bindings == null) return null;
         Set<String> toRemove = new HashSet<String>();
         if (bindings != cached) {
         	for (Map.Entry<String, Object> entry : bindings.entrySet()) {
         	  if (cached.putIfAbsent(entry.getKey(), entry.getValue()) != null) toRemove.add(entry.getKey());
         	}
         }
-        for (String key : toRemove) bindings.remove(key);*/
-        return bindings;
+        for (String key : toRemove) bindings.remove(key);
+        return cached;
     }
     
     /**
