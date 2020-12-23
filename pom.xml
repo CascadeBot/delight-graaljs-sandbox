@@ -30,7 +30,7 @@
         <dependency>
             <groupId>com.github.CascadeBot</groupId>
             <artifactId>delight-nashorn-sandbox</artifactId>
-            <version>f05dcb8deacbe360674fd6c97a6008a82b1a6d2f</version>
+            <version>4cf6afeca7bc2c0de9c5d095e921e61b8499c619</version>
         </dependency>
 
         <dependency>
