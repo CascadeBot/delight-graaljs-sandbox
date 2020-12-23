@@ -139,7 +139,7 @@ public class GraalSandboxImpl extends NashornSandboxImpl implements GraalSandbox
 	@Override
 	public Object eval(final String js, final ScriptContext scriptContext, final Bindings bindings)
 			throws ScriptCPUAbuseException, ScriptException {
-		/*Set<String> addedKeys = new HashSet<>();
+		Set<String> addedKeys = new HashSet<>();
 		if (scriptContext != null) {
 			Bindings engineBindings = scriptEngine.getBindings(ScriptContext.ENGINE_SCOPE);
 			Bindings contextBindings = scriptContext.getBindings(ScriptContext.ENGINE_SCOPE);
@@ -149,7 +149,7 @@ public class GraalSandboxImpl extends NashornSandboxImpl implements GraalSandbox
 					else addedKeys.add(key);
 				}			
 			}
-		}*/
+		}
 	    produceSecureBindings(); // We need this here for bindings
 		final JsSanitizer sanitizer = getSanitizer();
 		// see https://github.com/javadelight/delight-nashorn-sandbox/issues/73
@@ -164,7 +164,7 @@ public class GraalSandboxImpl extends NashornSandboxImpl implements GraalSandbox
 			securedJs = sanitizer.secureJs(js);
 		}
         final Bindings securedBindings = secureBindings(bindings);
-        /*if (bindings != null) addedKeys.addAll(bindings.keySet());*/
+        if (bindings != null) addedKeys.addAll(bindings.keySet());
         EvaluateOperation op = new EvaluateOperation(isStrict ? "'use strict';" + securedJs : securedJs, scriptContext, securedBindings);
         try {
         	return executeSandboxedOperation(op);
